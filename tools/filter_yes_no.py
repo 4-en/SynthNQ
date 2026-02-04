@@ -4,12 +4,13 @@ from structs import SynthNQEntry
 
 def is_yes_no_answer(answer):
     # detect answers with <= 3 words where at least one word is yes or no (case insensitive)
+    # (or other binary answers like "true", "false", "correct", "incorrect", "right", "wrong", "left", "right")
     words = answer.strip().lower().split()
     words = [word.strip('.,!?;"\'()[]') for word in words]  # remove punctuation
-    return len(words) <= 3 and any(word in ['yes', 'no'] for word in words)
+    return len(words) <= 3 and any(word in ['yes', 'no', 'true', 'false', 'correct', 'incorrect', 'right', 'wrong', 'left'] for word in words)
 
-DATASET_FILE = 'raw_data/synth_nq.jsonl'
-OUTPUT_FILE = 'raw_data/synth_nq_filtered.jsonl'
+DATASET_FILE = '../raw_data/synth_nq.jsonl'
+OUTPUT_FILE = '../raw_data/synth_nq_filtered.jsonl'
 
 def filter_yes_no_questions(input_file, output_file):
     with open(input_file, 'r') as f:
