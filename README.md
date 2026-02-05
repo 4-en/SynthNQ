@@ -1,4 +1,4 @@
-# SynthNQ: High-Fidelity Synthetic RAG Benchmark
+# SynthNQ: Fictional Synthetic RAG Benchmark
 
 **SynthNQ** is a robust framework and dataset for evaluating Retrieval-Augmented Generation (RAG) pipelines. It solves the **data leakage** problem by providing a purely fictionalized environment where models cannot rely on internal parametric memory, forcing total reliance on retrieved context. The dataset includes questions, answers and contexts, making it suitable for both retrieval and generation evaluation.
 
