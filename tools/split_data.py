@@ -3,6 +3,7 @@
 import os
 
 SOURCE_FILE = '../raw_data/synth_nq.jsonl'
+OUTPUT_DIR = '../dataset/'
 
 def split_data(source_file, train_file, val_file, test_file, train_ratio=0.8, val_ratio=0.1):
     with open(source_file, 'r') as f:
@@ -30,7 +31,7 @@ def split_data(source_file, train_file, val_file, test_file, train_ratio=0.8, va
                 test_f.write(line)
                 
     # write stats in table in md file
-    with open('README.md', 'w') as f:
+    with open(os.path.join(OUTPUT_DIR, 'README.md'), 'w') as f:
         f.write(f"# Dataset Split\n\n")
         f.write(f"| Split | File | Number of Samples | Percentage |\n")
         f.write(f"|-------|------|-------------------|------------|\n")
@@ -42,4 +43,4 @@ def split_data(source_file, train_file, val_file, test_file, train_ratio=0.8, va
         
                 
 if __name__ == "__main__":
-    split_data(SOURCE_FILE, 'synth_nq_train.jsonl', 'synth_nq_val.jsonl', 'synth_nq_test.jsonl')
+    split_data(SOURCE_FILE, os.path.join(OUTPUT_DIR, 'synth_nq_train.jsonl'), os.path.join(OUTPUT_DIR, 'synth_nq_val.jsonl'), os.path.join(OUTPUT_DIR, 'synth_nq_test.jsonl'))
