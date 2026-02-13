@@ -24,15 +24,23 @@ Each entry in the `.jsonl` output follows the `SynthNQEntry` structure:
 | `false_answers` | Plausible but incorrect distractors for multiple-choice testing. |
 
 ## Quick Start
+You can use the available dataset or generate new entries using this repository.
 
-### Installation
+### Using the dataset via HuggingFace datasets
+```python
+from datasets import load_dataset
+dataset = load_dataset("4-en/SynthNQ")
+```
+
+### Generating new Samples
+#### Installation
 
 ```bash
 pip install -r requirements.txt
 
 ```
 
-### Generation
+#### Generation
 
 To generate new entries, use:
 
@@ -41,7 +49,7 @@ python synth.py --api_key YOUR_API_KEY --target_size 1000 --num_threads 4
 
 ```
 
-### Key Arguments
+#### Key Arguments
 
 * `--output_file`: Set output file for jsonl data.
 * `--model_id`: Set the model id for generation (via google-genai).
